@@ -123,3 +123,34 @@ a:focus-visible {
 .animate-pulse-slow {
   animation: pulse 3s ease-in-out infinite;
 }
+
+/* Section backgrounds: soft, textured gradients */
+.bg-section-a {
+  /* from matches SectionDivider to="a" color */
+  background-color: #120909;
+  background-image: linear-gradient(
+    to bottom,
+    #120909 0%,
+    #0a0a0a 100%
+  );
+}
+
+.bg-section-b {
+  /* inverse to keep continuity */
+  background-color: #0a0a0a;
+  background-image: linear-gradient(
+    to bottom,
+    #0a0a0a 0%,
+    #120909 100%
+  );
+}
+
+/* Fades for section transitions */
+.fade-to-a {
+  /* Match .bg-section-a top color */
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(24, 8, 8, 0.55) 100%);
+}
+.fade-to-b {
+  /* Match .bg-section-b top color */
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.95) 100%);
+}

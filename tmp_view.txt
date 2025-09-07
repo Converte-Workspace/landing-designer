@@ -1,0 +1,163 @@
+﻿"use client";
+
+import { useEffect, useState } from "react";
+
+export function MiddleInfo() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    let dir = 1; // 1: forward, -1: backward
+    const id = setInterval(() => {
+      setActive((a) => {
+        if (a === 2) {
+          dir = -1;
+          return a - 1;
+        }
+        if (a === 0) {
+          dir = 1;
+          return a + 1;
+        }
+        return a + dir;
+      });
+    }, 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  const cards = [
+    {
+      title: "Desenvolvimento Web",
+      desc:
+        "Sites modernos e responsivos usando as tecnologias mais avanÃ§adas do mercado.",
+      features: [
+        "React & Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Performance otimizada",
+      ],
+      path: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+      headingHover: "group-hover:text-red-300",
+    },
+    {
+      title: "Aplicativos Mobile",
+      desc:
+        "Apps nativos e hÃ­bridos para iOS e Android com experiÃªncia excepcional.",
+      features: [
+        "React Native",
+        "Flutter",
+        "UI/UX otimizado",
+        "App Store deploy",
+      ],
+      path:
+        "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+      headingHover: "group-hover:text-red-400",
+    },
+    {
+      title: "E-commerce",
+      desc:
+        "Lojas virtuais completas com integraÃ§Ã£o de pagamentos e gestÃ£o avanÃ§ada.",
+      features: [
+        "Shopify & WooCommerce",
+        "Pagamentos integrados",
+        "Dashboard administrativo",
+        "SEO otimizado",
+      ],
+      path: "M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z",
+      headingHover: "group-hover:text-red-500",
+    },
+  ];
+
+  const order = [(active + 2) % 3, active, (active + 1) % 3]; // [prev, active, next]
+
+  return (
+    <section id="services" className="w-full py-32 md:py-42 lg:py-40 relative overflow-hidden">
+      <div className="absolute top-2 left-0 w-full h-full">
+        <div className="absolute top-1/3 left-1/6 w-64 h-64 bg-red-800/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/6 w-64 h-64 bg-red-600/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Nossos{" "}
+            <span className="bg-gradient-to-r from-red-400 to-red-700 bg-clip-text text-transparent">
+              ServiÃ§os
+            </span>
+          </h2>
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+            Oferecemos soluÃ§Ãµes completas em desenvolvimento digital, desde o
+            conceito atÃ© a implementaÃ§Ã£o final.
+          </p>
+        </div>
+
+        {(() => {
+          // Build extended slides for seamless loop with 3 visible
+          // Prepend last two and append first two to avoid blanks on edges
+          const pre = [cards[(cards.length + -2) % cards.length], cards[(cards.length + -1) % cards.length]];
+          const post = [cards[0], cards[1 % cards.length]];
+          const extended = [...pre, ...cards, ...post];
+          const slideWidthPct = 100 / 3; // three visible slides
+          const baseIndex = 1 + active; // leftmost so that center = cards[active]
+          const translate = -(baseIndex) * slideWidthPct; // active goes 0..3 (3 = trailing clone)
+          return (
+            <div className="relative w-full overflow-hidden flex items-center min-h-[360px] md:min-h-[420px] lg:min-h-[480px]">
+              <div
+                className="flex gap-8 will-change-transform transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(${translate}%)` }}
+              >
+                {extended.map((card, i) => {
+                  const isCenter = i === baseIndex + 1; // middle of the visible trio
+                  return (
+                    <div
+                      key={`${card.title}-${i}`}
+                      className="basis-[calc((100%_-_64px)/3)] flex-shrink-0"
+                      aria-current={isCenter ? "true" : undefined}
+                    >
+                      <div
+                        className={
+                          "group bg-zinc-900 border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-black/30 " +
+                          (isCenter
+                            ? "scale-105 hover:bg-zinc-800"
+                            : "scale-95 opacity-95 hover:bg-zinc-800")
+                        }
+                      >
+                        <div className="w-16 h-16 bg-zinc-800 group-hover:bg-red-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform transition-colors duration-300">
+                          <svg
+                            className="w-8 h-8 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d={card.path}
+                            />
+                          </svg>
+                        </div>
+                        <h3
+                          className={`text-2xl font-semibold text-white mb-4 transition-colors ${card.headingHover}`}
+                        >
+                          {card.title}
+                        </h3>
+                        <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                          {card.desc}
+                        </p>
+                        <ul className="text-gray-400 text-sm space-y-2">
+                          {card.features.map((f) => (
+                            <li key={f}>{f}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })()}
+      </div>
+    </section>
+  );
+}
+
