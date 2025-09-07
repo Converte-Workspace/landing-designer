@@ -1,4 +1,26 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
 export function MiddleInfo() {
+  const [active, setActive] = useState(1);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive((prev) => (prev + 1) % 3);
+    }, 12000);
+    return () => clearInterval(id);
+  }, []);
+
+  const left = (active + 2) % 3;
+  const center = active % 3;
+  const right = (active + 1) % 3;
+
+  const cardBase =
+    "group flex-1 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 transition-all duration-1000 ease-[cubic-bezier(.22,.61,.36,1)] shadow-2xl shadow-black/20";
+  const cardCenter = "order-2 ring-1 ring-red-600/40";
+  const cardSide = "";
   return (
     <section
       id="services"
@@ -23,8 +45,26 @@ export function MiddleInfo() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="group bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 hover:bg-zinc-800 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-black/30">
+        <div className="flex gap-6 items-stretch select-none">
+          <motion.div
+            layout
+            initial={false}
+            animate={{
+              opacity: center === 0 ? 1 : 0.55,
+              scale: center === 0 ? 1.02 : 0.98,
+              backgroundColor: center === 0 ? "rgb(39,39,42)" : "rgba(24,24,27,0.80)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 220,
+              damping: 28,
+              layout: { duration: 0.6 },
+              opacity: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+              backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+            }}
+            whileHover={{ scale: 1.03 }}
+            className={`${cardBase} ${left === 0 ? "order-1" : right === 0 ? "order-3" : cardCenter}`}
+          >
             <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-8 h-8 text-white"
@@ -53,9 +93,27 @@ export function MiddleInfo() {
               <li>• Tailwind CSS</li>
               <li>• Performance otimizada</li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="group bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 hover:bg-zinc-800 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-black/30">
+          <motion.div
+            layout
+            initial={false}
+            animate={{
+              opacity: center === 1 ? 1 : 0.55,
+              scale: center === 1 ? 1.02 : 0.98,
+              backgroundColor: center === 1 ? "rgb(39,39,42)" : "rgba(24,24,27,0.80)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 220,
+              damping: 28,
+              layout: { duration: 0.6 },
+              opacity: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+              backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+            }}
+            whileHover={{ scale: 1.03 }}
+            className={`${cardBase} ${left === 1 ? "order-1" : right === 1 ? "order-3" : cardCenter}`}
+          >
             <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-8 h-8 text-white"
@@ -84,9 +142,27 @@ export function MiddleInfo() {
               <li>• UI/UX otimizado</li>
               <li>• App Store deploy</li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="group bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 hover:bg-zinc-800 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-black/30">
+          <motion.div
+            layout
+            initial={false}
+            animate={{
+              opacity: center === 2 ? 1 : 0.55,
+              scale: center === 2 ? 1.02 : 0.98,
+              backgroundColor: center === 2 ? "rgb(39,39,42)" : "rgba(24,24,27,0.80)",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 220,
+              damping: 28,
+              layout: { duration: 0.6 },
+              opacity: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+              backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+            }}
+            whileHover={{ scale: 1.03 }}
+            className={`${cardBase} ${left === 2 ? "order-1" : right === 2 ? "order-3" : cardCenter}`}
+          >
             <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-8 h-8 text-white"
@@ -115,7 +191,7 @@ export function MiddleInfo() {
               <li>• Dashboard administrativo</li>
               <li>• SEO otimizado</li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
