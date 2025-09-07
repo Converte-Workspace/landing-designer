@@ -44,12 +44,6 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-md flex justify-center">
-          <div className="w-1 h-3 bg-white/50 rounded-md mt-2"></div>
-        </div>
-      </div>
-
       {/* Divider anchored to the bottom for perfect alignment */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[-1px] z-10">
         <SectionDivider to="a" />

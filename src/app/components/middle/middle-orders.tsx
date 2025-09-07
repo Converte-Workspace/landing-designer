@@ -139,7 +139,7 @@ Aqui irá um breve resumo do projeto, destacando suas principais
         </div>
 
         <div className="mt-16">
-          <button className="bg-gradient-to-r from-red-700 to-black hover:from-red-800 hover:to-black text-white font-semibold px-6 py-3 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg shadow-red-700/25">
+          <button className="bg-gradient-to-r from-red-700 to-red-500 hover:from-red-800 hover:to-red-600 text-white font-semibold px-6 py-3 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg shadow-red-700/25">
             Ver Todos os Projetos
           </button>
         </div>

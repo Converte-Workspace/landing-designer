@@ -24,8 +24,8 @@ export function MiddleInfo() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="group bg-gradient-to-br from-zinc-900 via-red-950 to-black border border-red-900/30 rounded-2xl p-8 hover:bg-gradient-to-br hover:from-red-900 hover:to-black transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-red-800/30">
-            <div className="w-16 h-16 bg-gradient-to-r from-red-700 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div className="group bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 hover:bg-zinc-800 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-black/30">
+            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
@@ -55,8 +55,8 @@ export function MiddleInfo() {
             </ul>
           </div>
 
-          <div className="group bg-gradient-to-br from-zinc-900 via-red-900 to-black border border-red-900/30 rounded-2xl p-8 hover:bg-gradient-to-br hover:from-red-800 hover:to-black transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-red-700/30">
-            <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-black rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div className="group bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 hover:bg-zinc-800 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-black/30">
+            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
@@ -86,8 +86,8 @@ export function MiddleInfo() {
             </ul>
           </div>
 
-          <div className="group bg-gradient-to-br from-zinc-900 via-red-800 to-black border border-red-900/30 rounded-2xl p-8 hover:bg-gradient-to-br hover:from-black hover:to-red-900 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-red-600/30">
-            <div className="w-16 h-16 bg-gradient-to-r from-black to-red-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div className="group bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 hover:bg-zinc-800 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-black/30">
+            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
