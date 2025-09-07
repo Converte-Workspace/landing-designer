@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-gradient-to-br from-black via-red-900 to-black border-t border-red-900/40 py-16"
+      className="bg-black py-16"
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -182,7 +182,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-red-900/40 pt-8 mb-8">
+        <div className="pt-8 mb-8">
           <div className="max-w-md mx-auto text-center">
             <h3 className="text-white font-semibold text-lg mb-2">
               Envie seu e-mail
@@ -203,7 +203,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-red-900/40 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
           <p>&copy; 2025 NB. Todos os direitos reservados.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-red-400 transition-colors">

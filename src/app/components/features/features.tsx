@@ -1,6 +1,6 @@
 export function Features() {
   return (
-    <section className="py-20 bg-black/40 backdrop-blur-sm">
+    <section className="py-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">

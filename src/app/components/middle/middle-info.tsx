@@ -2,11 +2,11 @@ export function MiddleInfo() {
   return (
     <section
       id="services"
-      className="w-full py-20 bg-gradient-to-br from-black via-red-950 to-zinc-900 relative overflow-hidden"
+      className="w-full py-20 relative overflow-hidden"
     >
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/3 left-1/6 w-64 h-64 bg-red-800/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/3 right-1/6 w-64 h-64 bg-red-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/6 w-64 h-64 bg-red-800/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-1/6 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">

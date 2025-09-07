@@ -43,7 +43,7 @@ export function FooterWaveDivider({ from = "b", className = "" }: { from?: "a" |
   const gradId = `footerWaveGrad-${from}`;
 
   return (
-    <div aria-hidden className={`pointer-events-none -mt-6 sm:-mt-8 md:-mt-10 ${className}`}>
+    <div aria-hidden className={`pointer-events-none -mt-16 sm:-mt-20 md:-mt-24 mb-[-1px] ${className}`}>
       <svg
         className="block w-full h-20 sm:h-24 md:h-28"
         viewBox="0 0 1200 120"
