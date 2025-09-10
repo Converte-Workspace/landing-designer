@@ -9,7 +9,7 @@ import { FooterWaveDivider } from "./components/dividers/section-divider";
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative overflow-x-hidden">
       {/* Top: only banner (no gradients), same structure/flow */}
       <div className="relative">
         <Header />
