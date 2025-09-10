@@ -18,13 +18,13 @@ export function MiddleInfo() {
   const right = (active + 1) % 3;
 
   const cardBase =
-    "group flex-1 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 transition-all duration-1000 ease-[cubic-bezier(.22,.61,.36,1)] shadow-2xl shadow-black/20";
+    "group flex-1 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 overflow-hidden transition-all duration-1000 ease-[cubic-bezier(.22,.61,.36,1)] shadow-2xl shadow-black/20";
   const cardCenter = "order-2 ring-1 ring-red-600/40";
   const cardSide = "";
   return (
     <section
       id="services"
-      className="w-full py-20 relative overflow-hidden"
+      className="w-full py-16 md:py-20 relative overflow-hidden overscroll-none"
     >
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-1/3 left-1/6 w-64 h-64 bg-red-800/10 rounded-full blur-3xl"></div>
@@ -45,7 +45,7 @@ export function MiddleInfo() {
           </p>
         </div>
 
-        <div className="flex gap-6 items-stretch select-none">
+        <div className="flex flex-col md:flex-row gap-6 items-stretch select-none overflow-hidden">
           <motion.div
             layout
             initial={false}
@@ -63,7 +63,7 @@ export function MiddleInfo() {
               backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
             }}
             whileHover={{ scale: 1.03 }}
-            className={`${cardBase} ${left === 0 ? "order-1" : right === 0 ? "order-3" : cardCenter}`}
+            className={`${cardBase} ${left === 0 ? "order-1" : right === 0 ? "order-3" : cardCenter} w-full min-w-0`}
           >
             <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
@@ -112,7 +112,7 @@ export function MiddleInfo() {
               backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
             }}
             whileHover={{ scale: 1.03 }}
-            className={`${cardBase} ${left === 1 ? "order-1" : right === 1 ? "order-3" : cardCenter}`}
+            className={`${cardBase} ${left === 1 ? "order-1" : right === 1 ? "order-3" : cardCenter} w-full min-w-0`}
           >
             <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
@@ -161,7 +161,7 @@ export function MiddleInfo() {
               backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
             }}
             whileHover={{ scale: 1.03 }}
-            className={`${cardBase} ${left === 2 ? "order-1" : right === 2 ? "order-3" : cardCenter}`}
+            className={`${cardBase} ${left === 2 ? "order-1" : right === 2 ? "order-3" : cardCenter} w-full min-w-0`}
           >
             <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
@@ -194,6 +194,20 @@ export function MiddleInfo() {
           </motion.div>
         </div>
       </div>
+      <style jsx>{`
+        /* Oculta qualquer scrollbar dentro da seção services */
+        #services,
+        #services * {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE 10+ */
+        }
+        #services::-webkit-scrollbar,
+        #services *::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+          display: none; /* Chrome/Safari/Edge */
+        }
+      `}</style>
     </section>
   );
 }

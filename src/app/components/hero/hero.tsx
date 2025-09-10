@@ -10,7 +10,7 @@ export function Hero() {
           alt="Background"
           fill
           quality={100}
-          className="object-cover opacity-50"
+          className="object-cover opacity-100"
           priority
         />
       </div>
