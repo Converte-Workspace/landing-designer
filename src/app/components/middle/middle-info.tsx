@@ -24,7 +24,7 @@ export function MiddleInfo() {
   return (
     <section
       id="services"
-      className="w-full py-16 md:py-20 relative overflow-hidden"
+      className="w-full py-16 md:py-20 relative overflow-hidden overscroll-none"
     >
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-1/3 left-1/6 w-64 h-64 bg-red-800/10 rounded-full blur-3xl"></div>
@@ -45,7 +45,7 @@ export function MiddleInfo() {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 items-stretch select-none overflow-x-hidden">
+        <div className="flex flex-col md:flex-row gap-6 items-stretch select-none overflow-hidden">
           <motion.div
             layout
             initial={false}
@@ -194,6 +194,20 @@ export function MiddleInfo() {
           </motion.div>
         </div>
       </div>
+      <style jsx>{`
+        /* Oculta qualquer scrollbar dentro da seção services */
+        #services,
+        #services * {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE 10+ */
+        }
+        #services::-webkit-scrollbar,
+        #services *::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+          display: none; /* Chrome/Safari/Edge */
+        }
+      `}</style>
     </section>
   );
 }
