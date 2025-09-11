@@ -6,6 +6,9 @@ import { motion } from "framer-motion";
 export function MiddleInfo() {
   const [active, setActive] = useState(1);
 
+  const handleNext = () => setActive((prev) => (prev + 1) % 3);
+  const handlePrev = () => setActive((prev) => (prev + 2) % 3);
+
   useEffect(() => {
     const id = setInterval(() => {
       setActive((prev) => (prev + 1) % 3);
@@ -20,7 +23,6 @@ export function MiddleInfo() {
   const cardBase =
     "group flex-1 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 overflow-hidden transition-all duration-1000 ease-[cubic-bezier(.22,.61,.36,1)] shadow-2xl shadow-black/20";
   const cardCenter = "order-2 ring-1 ring-red-600/40";
-  const cardSide = "";
   return (
     <section
       id="services"
@@ -45,7 +47,28 @@ export function MiddleInfo() {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 items-stretch select-none overflow-hidden">
+        <div className="relative flex items-center">
+          <button
+            aria-label="Anterior"
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-zinc-800 text-white hover:bg-zinc-700"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
+          <div className="flex flex-row gap-6 items-stretch select-none overflow-hidden mx-12 w-full">
           <motion.div
             layout
             initial={false}
@@ -192,6 +215,28 @@ export function MiddleInfo() {
               <li>• SEO otimizado</li>
             </ul>
           </motion.div>
+
+          </div>
+
+          <button
+            aria-label="Próximo"
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-zinc-800 text-white hover:bg-zinc-700"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
         </div>
       </div>
       <style jsx>{`
