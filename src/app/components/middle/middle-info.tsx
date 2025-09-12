@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export function MiddleInfo() {
@@ -13,6 +13,13 @@ export function MiddleInfo() {
   const goToNext = () => {
     setActive((prev) => (prev + 1) % 3);
   };
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      goToNext();
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
 
   const getCardPosition = (index: number) => {
     const diff = (index - active + 3) % 3;
