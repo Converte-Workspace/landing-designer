@@ -45,13 +45,13 @@ export function MiddleOrders() {
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
                 <span className="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
                 <span className="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
@@ -82,13 +82,13 @@ export function MiddleOrders() {
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
                 <span className="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
                 <span className="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
@@ -119,13 +119,13 @@ Aqui irá um breve resumo do projeto, destacando suas principais
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
                 <span className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
                 <span className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">
-                  teste
+                  Tecnologia
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">

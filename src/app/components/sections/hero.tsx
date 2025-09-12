@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SectionDivider } from "../ui/dividers/section-divider";
+import { SectionDivider } from "../ui/section-divider";
 
 export function Hero() {
   return (

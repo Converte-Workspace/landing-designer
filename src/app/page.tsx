@@ -5,7 +5,7 @@ import { Features } from "./components/sections/features";
 import { MiddleInfo } from "./components/sections/middle-info";
 import { MiddleOrders } from "./components/sections/middle-orders";
 import { CTA } from "./components/sections/cta";
-import { FooterWaveDivider } from "./components/ui/dividers/section-divider";
+import { FooterWaveDivider } from "./components/ui/section-divider";
 
 export default function Home() {
   return (
