@@ -1,26 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 export function MiddleInfo() {
   const [active, setActive] = useState(1);
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setActive((prev) => (prev + 1) % 3);
-    }, 12000);
-    return () => clearInterval(id);
-  }, []);
+  const goToPrev = () => {
+    setActive((prev) => (prev - 1 + 3) % 3);
+  };
 
-  const left = (active + 2) % 3;
-  const center = active % 3;
-  const right = (active + 1) % 3;
+  const goToNext = () => {
+    setActive((prev) => (prev + 1) % 3);
+  };
+
+  const getCardPosition = (index: number) => {
+    const diff = (index - active + 3) % 3;
+    switch (diff) {
+      case 0: return { x: 0, scale: 1.05, opacity: 1, zIndex: 30, rotateY: 0 };
+      case 1: return { x: 350, scale: 0.85, opacity: 0.8, zIndex: 20, rotateY: 10 };
+      case 2: return { x: -350, scale: 0.85, opacity: 0.8, zIndex: 20, rotateY: -10 };
+      default: return { x: 0, scale: 1, opacity: 1, zIndex: 10, rotateY: 0 };
+    }
+  };
 
   const cardBase =
-    "group flex-1 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 overflow-hidden transition-all duration-1000 ease-[cubic-bezier(.22,.61,.36,1)] shadow-2xl shadow-black/20";
-  const cardCenter = "order-2 ring-1 ring-red-600/40";
-  const cardSide = "";
+    "group absolute w-80 h-80 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-6 overflow-hidden shadow-2xl shadow-black/20 transform-style-preserve-3d";
+  const cardCenter = "ring-1 ring-red-600/40";
   return (
     <section
       id="services"
@@ -45,27 +51,43 @@ export function MiddleInfo() {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 items-stretch select-none overflow-hidden">
+        <div className="relative flex items-center justify-center">
+          <button
+            onClick={goToPrev}
+            className="absolute left-0 z-20 w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            aria-label="Serviço anterior"
+          >
+            <svg
+              className="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
+          <div className="relative flex items-center justify-center h-80 mx-16 perspective-1000">
           <motion.div
             layout
             initial={false}
-            animate={{
-              opacity: center === 0 ? 1 : 0.55,
-              scale: center === 0 ? 1.02 : 0.98,
-              backgroundColor: center === 0 ? "rgb(39,39,42)" : "rgba(24,24,27,0.80)",
-            }}
+            animate={getCardPosition(0)}
             transition={{
               type: "spring",
-              stiffness: 220,
-              damping: 28,
-              layout: { duration: 0.6 },
-              opacity: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
-              backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+              stiffness: 260,
+              damping: 25,
+              duration: 0.6,
             }}
             whileHover={{ scale: 1.03 }}
-            className={`${cardBase} ${left === 0 ? "order-1" : right === 0 ? "order-3" : cardCenter} w-full min-w-0`}
+            className={`${cardBase} ${getCardPosition(0).zIndex === 30 ? cardCenter : ""}`}
+            style={{ zIndex: getCardPosition(0).zIndex }}
           >
-            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
@@ -80,14 +102,14 @@ export function MiddleInfo() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-red-300 transition-colors">
+            <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-red-300 transition-colors text-center">
               Desenvolvimento Web
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            <p className="text-gray-300 text-sm leading-relaxed mb-4 text-center">
               Sites modernos e responsivos usando as tecnologias mais avançadas
               do mercado.
             </p>
-            <ul className="text-gray-400 text-sm space-y-2">
+            <ul className="text-gray-400 text-sm text-center">
               <li>• React & Next.js</li>
               <li>• TypeScript</li>
               <li>• Tailwind CSS</li>
@@ -98,23 +120,18 @@ export function MiddleInfo() {
           <motion.div
             layout
             initial={false}
-            animate={{
-              opacity: center === 1 ? 1 : 0.55,
-              scale: center === 1 ? 1.02 : 0.98,
-              backgroundColor: center === 1 ? "rgb(39,39,42)" : "rgba(24,24,27,0.80)",
-            }}
+            animate={getCardPosition(1)}
             transition={{
               type: "spring",
-              stiffness: 220,
-              damping: 28,
-              layout: { duration: 0.6 },
-              opacity: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
-              backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+              stiffness: 260,
+              damping: 25,
+              duration: 0.6,
             }}
             whileHover={{ scale: 1.03 }}
-            className={`${cardBase} ${left === 1 ? "order-1" : right === 1 ? "order-3" : cardCenter} w-full min-w-0`}
+            className={`${cardBase} ${getCardPosition(1).zIndex === 30 ? cardCenter : ""}`}
+            style={{ zIndex: getCardPosition(1).zIndex }}
           >
-            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
@@ -132,11 +149,11 @@ export function MiddleInfo() {
             <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-red-400 transition-colors">
               Aplicativos Mobile
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            <p className="text-gray-300 text-sm leading-relaxed mb-4 text-center">
               Apps nativos e híbridos para iOS e Android com experiência
               excepcional.
             </p>
-            <ul className="text-gray-400 text-sm space-y-2">
+            <ul className="text-gray-400 text-sm text-center">
               <li>• React Native</li>
               <li>• Flutter</li>
               <li>• UI/UX otimizado</li>
@@ -147,23 +164,18 @@ export function MiddleInfo() {
           <motion.div
             layout
             initial={false}
-            animate={{
-              opacity: center === 2 ? 1 : 0.55,
-              scale: center === 2 ? 1.02 : 0.98,
-              backgroundColor: center === 2 ? "rgb(39,39,42)" : "rgba(24,24,27,0.80)",
-            }}
+            animate={getCardPosition(2)}
             transition={{
               type: "spring",
-              stiffness: 220,
-              damping: 28,
-              layout: { duration: 0.6 },
-              opacity: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
-              backgroundColor: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+              stiffness: 260,
+              damping: 25,
+              duration: 0.6,
             }}
             whileHover={{ scale: 1.03 }}
-            className={`${cardBase} ${left === 2 ? "order-1" : right === 2 ? "order-3" : cardCenter} w-full min-w-0`}
+            className={`${cardBase} ${getCardPosition(2).zIndex === 30 ? cardCenter : ""}`}
+            style={{ zIndex: getCardPosition(2).zIndex }}
           >
-            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto">
               <svg
                 className="w-8 h-8 text-white"
                 fill="none"
@@ -181,17 +193,38 @@ export function MiddleInfo() {
             <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-red-500 transition-colors">
               E-commerce
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            <p className="text-gray-300 text-sm leading-relaxed mb-4 text-center">
               Lojas virtuais completas com integração de pagamentos e gestão
               avançada.
             </p>
-            <ul className="text-gray-400 text-sm space-y-2">
+            <ul className="text-gray-400 text-sm text-center">
               <li>• Shopify & WooCommerce</li>
               <li>• Pagamentos integrados</li>
               <li>• Dashboard administrativo</li>
               <li>• SEO otimizado</li>
             </ul>
           </motion.div>
+          </div>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-0 z-20 w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            aria-label="Próximo serviço"
+          >
+            <svg
+              className="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
         </div>
       </div>
       <style jsx>{`
@@ -206,6 +239,15 @@ export function MiddleInfo() {
           width: 0;
           height: 0;
           display: none; /* Chrome/Safari/Edge */
+        }
+        
+        /* Classes de perspectiva e transform 3D */
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        
+        .transform-style-preserve-3d {
+          transform-style: preserve-3d;
         }
       `}</style>
     </section>
