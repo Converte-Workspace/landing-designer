@@ -1,11 +1,11 @@
-import { Footer } from "./components/footer/footer";
-import Header from "./components/header/header";
-import { Hero } from "./components/hero/hero";
-import { Features } from "./components/features/features";
-import { MiddleInfo } from "./components/middle/middle-info";
-import { MiddleOrders } from "./components/middle/middle-orders";
-import { CTA } from "./components/cta/cta";
-import { FooterWaveDivider } from "./components/dividers/section-divider";
+import { Footer } from "./components/layout/footer";
+import Header from "./components/layout/header";
+import { Hero } from "./components/sections/hero";
+import { Features } from "./components/sections/features";
+import { MiddleInfo } from "./components/sections/middle-info";
+import { MiddleOrders } from "./components/sections/middle-orders";
+import { CTA } from "./components/sections/cta";
+import { FooterWaveDivider } from "./components/ui/dividers/section-divider";
 
 export default function Home() {
   return (
@@ -26,11 +26,13 @@ export default function Home() {
       <div className="bg-section-a">
         <MiddleOrders />
       </div>
-      <div className="bg-section-b">
+      <div className="bg-section-b relative">
         <CTA />
+        {/* Divider específico antes do footer: onda com gradiente da seção anterior para o footer */}
+        <div className="pointer-events-none">
+          <FooterWaveDivider from="b" />
+        </div>
       </div>
-      {/* Divider específico antes do footer: onda com gradiente da seção anterior para o footer */}
-      <FooterWaveDivider from="b" />
       <Footer />
     </div>
   );

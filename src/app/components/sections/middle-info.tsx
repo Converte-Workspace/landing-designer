@@ -61,7 +61,7 @@ export function MiddleInfo() {
         <div className="relative flex items-center justify-center">
           <button
             onClick={goToPrev}
-            className="absolute left-0 z-20 w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="absolute left-0 z-20 w-12 h-12 bg-gray-600/30 hover:bg-gray-600/50 rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             aria-label="Serviço anterior"
           >
             <svg
@@ -215,7 +215,7 @@ export function MiddleInfo() {
 
           <button
             onClick={goToNext}
-            className="absolute right-0 z-20 w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="absolute right-0 z-20 w-12 h-12 bg-gray-600/30 hover:bg-gray-600/50 rounded-full flex items-center justify-center transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             aria-label="Próximo serviço"
           >
             <svg
